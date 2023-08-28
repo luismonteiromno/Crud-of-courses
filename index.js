@@ -9,10 +9,6 @@ const courses = [
 
 port.use(express.json());
 
-port.get('/courses/:index', (req, res) => {
-    const { index } = req.params;
-    return res.json(courses[index]);
-})
 
 port.get('/courses', (req, res) => {
     return res.json(courses);
@@ -21,6 +17,11 @@ port.get('/courses', (req, res) => {
 port.post('/courses', (req, res) => {
     const { body } = req.body;
     return res.json(courses);
+})
+
+port.get('/courses/:index', (req, res) => {
+    const { index } = req.params;
+    return res.json(courses[index]);
 })
 
 port.put('/courses/:index', (req, res) => {
