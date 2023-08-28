@@ -1,6 +1,6 @@
 const express = require("express");
 
-const port = express;
+const port = express();
 
 const courses = [
                 'Análise e Desenvolvimento de Sistemas', 'Ciências da Computação', 
@@ -9,29 +9,29 @@ const courses = [
 
 port.use(express.json());
 
-port.get('/courses/:id', (req, res) => {
-    const { id } = req.params;
-    return res.json(courses[id]);
+port.get('/courses/:index', (req, res) => {
+    const { index } = req.params;
+    return res.json(courses[index]);
 })
 
 port.get('/courses', (req, res) => {
-    return res.json(cursos);
+    return res.json(courses);
 })
 
 port.post('/courses', (req, res) => {
     const { body } = req.body;
-    return res.json(cursos);
+    return res.json(courses);
 })
 
-port.put('/courses/:id', (req, res) => {
-    const { id } = req.params;
+port.put('/courses/:index', (req, res) => {
+    const { index } = req.params;
     const { body } = req.body;
-    return res.json(cursos);
+    return res.json(courses);
 })
 
-port.delete('/courses/:id', (req, res) => {
-    const { id } = req.params;
-    return res.json(cursos);
+port.delete('/courses/:index', (req, res) => {
+    const { index } = req.params;
+    return res.json(courses);
 })
 
 
