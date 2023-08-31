@@ -9,6 +9,10 @@ const courses = {
             ]
         };
 
+const users = {
+    'users': []
+        };
+
 port.use(express.json());
 
 
@@ -41,6 +45,37 @@ port.delete('/courses/:index', (req, res) => {
     courses.courses.splice(index, 1);
     return res.json({message: 'Curso deletado com sucesso'});
 })
+
+port.get('/users', (req, res) => {
+    return res.json(users);
+})
+
+port.post('/users', (req, res) => {
+    const { name } = req.body;
+    users.users.push(name);
+
+    return res.json(users);
+})
+
+port.get('/users/:index', (req, res) => {
+    const { index } = req.params;
+    return res.json({'users': users.users[index]});
+})
+
+port.put('/users/:index', (req, res) => {
+    const { index } = req.params;
+    const { name } = req.body;
+
+    users.users[index] = name;
+    return res.json(courses);
+})
+
+port.delete('/users/:index', (req, res) => {
+    const { index } = req.params;
+    users.users.splice(index, 1);
+    return res.json({message: 'Curso deletado com sucesso'});
+})
+
 
 
 port.listen(3000);
